@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preditor de Colesterol</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-main">
+          <p class="eyebrow">Modelo de regressao linear</p>
+          <h1 id="page-title">Preditor de Colesterol</h1>
+          <p class="intro-copy">
+            Informe as características da pessoa para estimar o colesterol previsto pelo modelo treinado.
+          </p>
+        </div>
+        <div class="model-note">
+          <h2>Como a previsão funciona</h2>
+          <p>
+            O modelo aprendeu padroes a partir de uma base histórica com informações como idade, peso, altura,
+            grupo sanguíneo, hábito de fumar e nível de atividade fisica. Ao receber novos dados, ele compara esse
+            perfil com os padrões encontrados no treinamento e estima um valor provável de colesterol.
+          </p>
+          <p>
+            O resultado e uma estimativa estatística, não um diagnóstico médico. Para interpretar exames ou tomar
+            decisões de saúde, procure um profissional qualificado.
+          </p>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Formulario de predicao">
+        <form id="prediction-form" class="form-panel">
+          <div class="field">
+            <label for="grupo_sanguineo">Grupo sanguineo</label>
+            <select id="grupo_sanguineo" name="grupo_sanguineo" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="fumante">Fumante</label>
+            <select id="fumante" name="fumante" required>
+              <option value="Nao">Nao</option>
+              <option value="Sim">Sim</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nivel_atividade_fisica">Nivel de atividade fisica</label>
+            <select id="nivel_atividade_fisica" name="nivel_atividade_fisica" required>
+              <option value="Baixo">Baixo</option>
+              <option value="Moderado">Moderado</option>
+              <option value="Alto">Alto</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="idade">Idade</label>
+            <input id="idade" name="idade" type="number" min="0" max="120" value="45" required />
+          </div>
+
+          <div class="field">
+            <label for="peso">Peso (kg)</label>
+            <input id="peso" name="peso" type="number" min="1" max="350" step="0.1" value="80" required />
+          </div>
+
+          <div class="field">
+            <label for="altura">Altura (cm)</label>
+            <input id="altura" name="altura" type="number" min="50" max="250" value="175" required />
+          </div>
+
+          <button id="submit-button" type="submit">Calcular colesterol</button>
+        </form>
+
+        <aside class="result-panel" aria-live="polite">
+          <span class="result-label">Resultado</span>
+          <strong id="result-value">--</strong>
+          <span id="result-unit">mg/dL</span>
+          <p id="result-message">Preencha o formulario e execute a predicao.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
